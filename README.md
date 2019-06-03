@@ -6,7 +6,8 @@ The particle filter is used in many applications. The inspiration for this imple
 ## Theory
 In application, robots equipped with sensors are never 100% sure of where they are. Even with the most advanced cameras or sensors, a robots "idea" of its location is probabalistic. Consider a robot navigating an unknown area. With the sensors provided, maps can be developed pretty reliably. At the same time, its important for a robot to be able to locate itself within a space.
 
-Particle filters solve the latter problem of localization inside a known space. At their most basic, random positions within the space are selected and assigned a probability of how likely it is for the robot to be there based on the known map. This sampling happens over an over, with the lowest probabilities dying out over time (ideally). Eventually, most of the particles will converge on a similar area, which is the guess as to where the robot actually is. More on particle filters can be read at the below link:
+Particle filters solve the latter problem of localization inside a known space. At their most basic, random positions within the space are selected and assigned a probability of how likely it is for the robot to be there based on the known map. This sampling happens over an over, with the lowest probabilities dying out over time (ideally). Eventually, most of the particles will converge on a similar area, which is the guess as to where the robot actually is. More on particle filters can be read at the following link: 
+
 http://robots.stanford.edu/papers/thrun.pf-in-robotics-uai02.pdf
 
 ## Factors to Consider in the Simulation
