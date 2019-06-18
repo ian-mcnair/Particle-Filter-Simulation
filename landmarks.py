@@ -5,6 +5,29 @@ Created on Tue Jun 18 10:32:07 2019
 @author: imcna
 """
 import random
+def choose_landmark_loop(display_width,display_height):
+    choice = True
+    while choice:
+        print("\n***************************************")
+        print('Landmarks need to be created.\n Please input a numerical choice below:')
+        print('1: Creates one landmark')
+        print('2: Creates two landmarks')
+        print('3: Creates three landmarks')
+        print('4: Creates four landmarks')
+        print('5: Creates random landmarks')
+        print('6: Creates a grid of 12 landmarks')
+        num = input('Input your choice:')
+        try:
+            num = int(num)
+            if num < 7 and num > 0:
+                landmarks = choose_landmark(num, display_width,display_height)
+                choice = False
+            else:
+                print('Error: User input out of range of choices')
+        except:
+            print('Error: Count not convert user input to integer')
+    return landmarks
+
 def choose_landmark(choice, display_width, display_height):
     if choice == 1:
         landmarks = [[int(display_width/2), int(display_height/2)]]

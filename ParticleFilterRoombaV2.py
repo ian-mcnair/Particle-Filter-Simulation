@@ -8,40 +8,14 @@ import pygame
 import math
 import draw_functions as draw
 from settings import Settings
-from landmarks import choose_landmark
+import landmarks as l
 import random
 
 # Setttings
 s = Settings()
 
-
 ########### Landmarks ##############
-choice = True
-while choice:
-    print("\n***************************************")
-    print('Landmarks need to be created.\n Please input a numerical choice below:')
-    print('1: Creates one landmark')
-    print('2: Creates two landmarks')
-    print('3: Creates three landmarks')
-    print('4: Creates four landmarks')
-    print('5: Creates random landmarks')
-    print('6: Creates a grid of 12 landmarks')
-    num = input('Input your choice:')
-    try:
-        num = int(num)
-        if num < 7 and num > 0:
-            landmarks = choose_landmark(num, s.display_width,s.display_height)
-            choice = False
-        else:
-            print('Error: User input out of range of choices')
-    except:
-        print('Error: Count not convert user input to integer')
-        
-
-        
-####################################################
-########## Don't Change Anything Below! ############
-####################################################
+landmarks = l.choose_landmark_loop(s.display_width, s.display_height)
 
 #### Pygame Init ####
 pygame.init()
