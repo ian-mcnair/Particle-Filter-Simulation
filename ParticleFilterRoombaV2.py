@@ -6,59 +6,39 @@ Created on Thu Dec 13 23:59:10 2018
 """
 import pygame
 import math
-import random
 import draw_functions as draw
 from settings import Settings
+from landmarks import choose_landmark
+import random
 
-# Set 
+# Setttings
 s = Settings()
-###### Starting Conditions You Can Change #######
-forward_variance = 5.
-turn_variance = 5.
-sensor_variance = 50.0
-refresh_rate =  20 #Should be int
+
 
 ########### Landmarks ##############
-# 1 Center Landmark
-#landmarks = [[int(display_width/2), int(display_height/2)]]
-# 2 Landmarks
-landmarks = [[int(s.display_width/4), int(s.display_height/2)], 
-             [int(3*s.display_width/4), int(s.display_height/2)]]
+choice = True
+while choice:
+    print("\n***************************************")
+    print('Landmarks need to be created.\n Please input a numerical choice below:')
+    print('1: Creates one landmark')
+    print('2: Creates two landmarks')
+    print('3: Creates three landmarks')
+    print('4: Creates four landmarks')
+    print('5: Creates random landmarks')
+    print('6: Creates a grid of 12 landmarks')
+    num = input('Input your choice:')
+    try:
+        num = int(num)
+        if num < 7 and num > 0:
+            landmarks = choose_landmark(num, s.display_width,s.display_height)
+            choice = False
+        else:
+            print('Error: User input out of range of choices')
+    except:
+        print('Error: Count not convert user input to integer')
+        
 
-'''
-# 3 Landmarks
-landmarks = [[int(display_width/2),int(display_height/3)],
-             [int(display_width/3), int(2*display_height/3)],
-             [int(2*display_width/3), int(2*display_height/3)]]
-'''
-'''
-# 4 Landmarks
-landmarks = [[int(display_width/4),int(display_height/4)], 
-             [int(3*display_width/4),int(display_height/4)], 
-             [int(3*display_width/4),int(3*display_height/4)], 
-             [int(display_width/4),int(3*display_height/4)]]
-
-### Random Landmarks
-landmarks = [[int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)],
-             [int(random.random()*display_width), int(random.random()*display_height)]]
-'''
-'''
-landmarks = []
-for i in range(4):
-    landmarks.append([int(display_width/10 + i*275), int(display_height/6)])
-    landmarks.append([int(display_width/10 + i*275), int(display_height*3/6)])
-    landmarks.append([int(display_width/10 + i*275), int(display_height*5/6)])
-'''
-
+        
 ####################################################
 ########## Don't Change Anything Below! ############
 ####################################################
@@ -144,7 +124,7 @@ def createParticles():
     particles = []
     for i in range(s.num_particles):
         add_particle = particle(s.displacement)
-        add_particle.changeNoise(forward_variance, turn_variance,sensor_variance)
+        add_particle.changeNoise(s.forward_variance, s.turn_variance,s.sensor_variance)
         particles.append(add_particle) 
     return particles
 
@@ -213,7 +193,7 @@ while app_status:
     
     error = meanError(roomba, particles) 
     #if error > 300: #If the filter gets confused, its best to reset
-    #    particles = createParticles()
+
     #Draw Windows
     draw.game_window(error, win, landmarks, s.display_width, s.display_height)
     draw.particle(particles, win)
@@ -221,6 +201,6 @@ while app_status:
 
     pygame.display.flip()
     
-    clock.tick(refresh_rate)
+    clock.tick(s.refresh_rate)
 
 pygame.quit()
