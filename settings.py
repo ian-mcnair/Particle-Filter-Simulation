@@ -15,11 +15,6 @@ class Settings:
         self.turn_variance = 5.
         self.sensor_variance = 50.0
         self.refresh_rate =  20
+        self.num_particles = 500
         
-# =============================================================================
-#         self.forward_variance = 5.
-#         self.turn_variance = 5.
-#         self.sensor_variance = 50.0
-#         self.refresh_rate =  20 #Should be int
-# =============================================================================
-        
+
