@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 13 11:17:33 2019
-
-@author: imcna
-"""
-
 class Settings:
     def __init__(self):
         self.display_width = 1000 # Should be int

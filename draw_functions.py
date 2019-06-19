@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 13 11:05:58 2019
-
-@author: imcna
-"""
-
 import pygame
 import math
 

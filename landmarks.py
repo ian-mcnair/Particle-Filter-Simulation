@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 18 10:32:07 2019
-
-@author: imcna
-"""
 import random
 def choose_landmark_loop(display_width,display_height):
     choice = True

@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 18 11:24:50 2019
-
-@author: imcna
-"""
 import random
 import math
 
