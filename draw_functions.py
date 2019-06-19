@@ -2,6 +2,7 @@ import pygame
 import math
 
 def game_window(error, win, landmarks, display_width, display_height):
+    """ Draws the game window"""
     black = (0, 0, 0)
     if error > 254:
         error = 255
@@ -13,13 +14,14 @@ def game_window(error, win, landmarks, display_width, display_height):
         pygame.draw.circle(win, black, landmarks[i] , 20)
         
 def avatar(image, x, y, angle, win):
-    #print('X = ' , x , '   Y = ', y, '   Direction = ', direction)
+    """ Places the avatar image"""
     rotated = pygame.transform.rotate(image, -angle*(180/math.pi))
     actual_pos = (x - rotated.get_rect().width/2, 
                   y - rotated.get_rect().height/2)
     win.blit(rotated, actual_pos)
     
 def particle(particles, win):
+    """ Draws the particles"""
     blue = (0,0,255)
     for p in particles:
         pos = (int(p.x), int(p.y))

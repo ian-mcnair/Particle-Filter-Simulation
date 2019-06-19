@@ -3,7 +3,7 @@ import pygame
 import draw_functions as draw
 from settings import Settings
 import landmarks as l
-from Particle import particle, meanError, createParticles
+from Particle import Particle, mean_error, create_particles
 from Event_and_Movement import button_event, move_particle, \
                                 get_weights, resample_particles
 
@@ -21,11 +21,11 @@ clock = pygame.time.Clock()
 image = pygame.image.load('cat_roombaBig.png')
 
 # Set up main Avatar - Cat on Roomba
-roomba = particle(s.displacement, s.display_width, s.display_height)
+roomba = Particle(s.displacement, s.display_width, s.display_height)
 
 
 # Creates Particles for the particle filter
-particles = createParticles(s.num_particles, 
+particles = create_particles(s.num_particles, 
                              s.displacement, 
                              s.forward_variance, 
                              s.turn_variance, 
@@ -76,7 +76,7 @@ while app_status:
     particles = resample_particles(particles, weights, s.num_particles)
     
     # Calculate Error
-    error = meanError(roomba, particles, s.display_width, s.display_height)
+    error = mean_error(roomba, particles, s.display_width, s.display_height)
 
     #Draws updated Windows/Particles/Avatar
     draw.game_window(error, win, landmarks, s.display_width, s.display_height)

@@ -1,7 +1,7 @@
 import random
 import math
 
-class particle:
+class Particle:
     """
     This class initializes the particle of the particle filter
     It 
@@ -15,18 +15,20 @@ class particle:
         self.forward_noise = 0.0
 
     
-    def placeParticle(self, new_x, new_y, new_angle, display_width, display_height):
-        #Mod stops values from being place out of bounds
+    def place_particle(self, new_x, new_y, new_angle, display_width, display_height):
+        """Mod stops values from being place out of bounds"""
         self.x = new_x % display_width
         self.y = new_y % display_height
         self.angle = new_angle % (2 * math.pi)
     
-    def changeNoise(self, f_noise, t_noise, s_noise):
+    def change_noise(self, f_noise, t_noise, s_noise):
+        """Changes the noise of each particle"""
         self.forward_noise = f_noise
         self.turn_noise = t_noise
         self.sense_noise = s_noise
     
     def sense(self, landmarks):
+        """Guesses at how far a landmark is based on sensor noise"""
         obs = []
         for i in range(len(landmarks)):
             distance = math.sqrt((self.x - landmarks[i][0]) ** 2 + (self.y - landmarks[i][1]) ** 2)
@@ -34,18 +36,20 @@ class particle:
             obs.append(distance)
         return obs
     
-    def move(self, turn, displacement, display_width, display_height):        
+    def move(self, turn, displacement, display_width, display_height):
+        """Moves and Turns the particles based on how the avatar moves"""
         angle = (self.angle + turn + random.gauss(0.0, self.turn_noise)) % (2 * math.pi)
         distance = displacement + random.gauss(0.0, self.forward_noise)
         x = (self.x + (math.cos(angle) * distance)) % display_width
         y = (self.y + (math.sin(angle) * distance)) % display_height
         # Update Particle
-        updated_particle = particle(displacement, display_width, display_height)
-        updated_particle.placeParticle(x, y, angle, display_width, display_height)
-        updated_particle.changeNoise(self.forward_noise, self.turn_noise, self.sense_noise)
+        updated_particle = Particle(displacement, display_width, display_height)
+        updated_particle.place_particle(x, y, angle, display_width, display_height)
+        updated_particle.change_noise(self.forward_noise, self.turn_noise, self.sense_noise)
         return updated_particle
     
     def measurement_prob(self, measurement, landmarks):
+        """Calculates the gaussian of the measurements """
         prob = 1.0
         for i in range(len(landmarks)):
             dist = math.sqrt((self.x - landmarks[i][0]) ** 2 + (self.y - landmarks[i][1]) ** 2)
@@ -53,9 +57,11 @@ class particle:
         return prob
     
     def gaussian(self, mu, sigma, x):
+        """Actually calculates the gaussian"""
         return math.exp(-((x - mu)/sigma)**2/2) / math.sqrt(2*math.pi*sigma**2)
     
-def meanError(roomba, particles, display_width, display_height):
+def mean_error(roomba, particles, display_width, display_height):
+    """Calcualtes the mean error"""
     sum_error = 0.0
     for p in particles:
         error_x = (p.x - roomba.x + (display_width/2.0)) % display_width - (display_width/2.0)
@@ -64,17 +70,18 @@ def meanError(roomba, particles, display_width, display_height):
         sum_error += error
     return sum_error / len(particles)
 
-def createParticles(num_particles, 
+def create_particles(num_particles, 
                     displacement, 
                     forward_variance, 
                     turn_variance, 
                     sensor_variance, 
                     display_width, 
                     display_height):
+    """ Creates all the particles for the filter"""
     particles = []
     for i in range(num_particles):
-        add_particle = particle(displacement, display_width, display_height)
-        add_particle.changeNoise(forward_variance, turn_variance, sensor_variance)
+        add_particle = Particle(displacement, display_width, display_height)
+        add_particle.change_noise(forward_variance, turn_variance, sensor_variance)
         particles.append(add_particle) 
     return particles
     

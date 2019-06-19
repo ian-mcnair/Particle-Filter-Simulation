@@ -1,5 +1,6 @@
 import random
 def choose_landmark_loop(display_width,display_height):
+    """ Loop which validates user choice in selection of landmark"""
     choice = True
     while choice:
         print("\n***************************************")
@@ -23,6 +24,7 @@ def choose_landmark_loop(display_width,display_height):
     return landmarks
 
 def choose_landmark(choice, display_width, display_height):
+    """ Takes input from user to select type of landmarks used in simulation"""
     if choice == 1:
         landmarks = [[int(display_width/2), int(display_height/2)]]
     elif choice == 2:
