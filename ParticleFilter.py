@@ -3,13 +3,16 @@ import pygame
 import draw_functions as draw
 from settings import Settings
 import landmarks as l
-from Particle import Particle, mean_error, create_particles
-from Event_and_Movement import button_event, move_particle, \
-                                get_weights, resample_particles
+from Particle import Particle
+from Particle import mean_error
+from Particle import create_particles
+from Event_and_Movement import button_event
+from Event_and_Movement import move_particle
+from Event_and_Movement import get_weights
+from Event_and_Movement import resample_particles
 
-# Import Settings
+## Import Settings
 s = Settings()
-
 # Import Landmarks
 landmarks = l.choose_landmark_loop(s.display_width, s.display_height)
 
@@ -18,7 +21,7 @@ pygame.init()
 win = pygame.display.set_mode((s.display_width, s.display_height))
 pygame.display.set_caption("Particle Filter: Cat on Roomba")
 clock = pygame.time.Clock()
-image = pygame.image.load('cat_roombaBig.png')
+image = pygame.image.load('cat_roomba2.png')
 
 # Set up main Avatar - Cat on Roomba
 roomba = Particle(s.displacement, s.display_width, s.display_height)
