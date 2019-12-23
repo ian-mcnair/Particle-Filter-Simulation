@@ -16,10 +16,13 @@ Randomness is added to replicate the idea of a noisy sensor. The particles are d
 Some predefined landmarks are also included and commented out. At a later time, a GUI may be made and overlayed on top in order to allow the user to choose the type of landmark they want to use.
 
 # To Run and View File
+
+<img src="https://github.com/ian-mcnair/Particle-Filter-Simulation/blob/master/resources/instructions.gif" width=600 height=370 align="right">
+
 ## From Windows
 [*You will need pygame already installed!*](https://www.pygame.org/wiki/GettingStarted)
 1. Clone directory to your system and cd into it
 2. From your terminal of choice, type "python app.py"
 3. Options in the terminal should pop up. Press desired number and visualization will load.
 
-<img src="https://github.com/ian-mcnair/Particle-Filter-Simulation/blob/master/resources/instructions.gif" width=600 height=370 align="right">
+
