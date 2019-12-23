@@ -1,4 +1,5 @@
-# ParticleFilter2DDemo
+# Particle Filter Simulation
+<img src="https://github.com/ian-mcnair/Particle-Filter-Simulation/blob/master/resources/example.gif" width=500 height=400 align="right">
 
 ## General Summary
 The particle filter is used in many applications. The inspiration for this implementation is locating a robot in a known space (or map). This project utilizes a main avatar (Cat on Roomba) as the actual location. The other smaller dots represent guesses as to where the robot thinks it actually is based on known landmarks which can be chosen inside the terminal once run. The user controls the actual robot's speed with the up and down arrows. There is not max limit, but the roomba will never move backwards. Direction is controlled with the left and right arrow keys by rotating. 
@@ -20,4 +21,5 @@ Some predefined landmarks are also included and commented out. At a later time, 
 1. Clone directory to your system and cd into it
 2. From your terminal of choice, type "python app.py"
 3. Options in the terminal should pop up. Press desired number and visualization will load.
-![](https://github.com/ian-mcnair/Particle-Filter-Simulation/blob/master/resources/instructions.gif)
+
+<img src="https://github.com/ian-mcnair/Particle-Filter-Simulation/blob/master/resources/instructions.gif" width=600 height=370 align="right">
