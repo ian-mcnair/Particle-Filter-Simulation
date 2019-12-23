@@ -14,3 +14,9 @@ http://robots.stanford.edu/papers/thrun.pf-in-robotics-uai02.pdf
 Randomness is added to replicate the idea of a noisy sensor. The particles are drawn under the position of the actual robot. They will most likely look a bit like static because the randomness factor added is larger to allow the user to actually see the particles. Inside the code, this randomness factor can be adjusted to see the effects of a "good" versus a "bad sensor.
 Some predefined landmarks are also included and commented out. At a later time, a GUI may be made and overlayed on top in order to allow the user to choose the type of landmark they want to use.
 
+# To Run and View File
+## From Windows
+*You will need pygame already installed!*
+1. Clone directory to your system and cd into it
+2. From your terminal of choice, type "python app.py"
+3. Options in the terminal should pop up. Press desired number and visualization will load.

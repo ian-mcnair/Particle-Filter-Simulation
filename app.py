@@ -18,7 +18,6 @@ def main():
     landmarks = l.choose_landmark_loop(s.display_width, s.display_height)
     
     # Initiate Pygame Attrributes
-    pygame.init()
     win = pygame.display.set_mode((s.display_width, s.display_height))
     pygame.display.set_caption("Particle Filter: Cat on Roomba")
     clock = pygame.time.Clock()
@@ -93,5 +92,6 @@ def main():
     
 # Quits game once app_status = False
 if __name__ == "__main__":
+    pygame.init()
     main()
     pygame.quit()
